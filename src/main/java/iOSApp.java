@@ -39,7 +39,7 @@ public class iOSApp {
             capabilities.setCapability("network", false);
             capabilities.setCapability("visual", true);
             capabilities.setCapability("devicelog", true);
-            //capabilities.setCapability("geoLocation", "HK");
+            capabilities.setCapability("smartUI.project", "real-device-ios-java-testng");
 
             String hub = "https://" + userName + ":" + accessKey + gridURL;
             driver = new AppiumDriver(new URL(hub), capabilities);
@@ -50,41 +50,8 @@ public class iOSApp {
             Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("color"))).click();
             Thread.sleep(1000);
 
-            //Changes the text to "Proverbial"
-            Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("Text"))).click();
-            Thread.sleep(1000);
-
-            //Toast will be visible
-            Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("toast"))).click();
-            Thread.sleep(1000);
-
-            //Notification will be visible
-            Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("notification"))).click();
-            Thread.sleep(4000);
-
-            //Opens the geolocation page
-            Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("geoLocation"))).click();
-            Thread.sleep(4000);
-
-            //Takes back
-            driver.navigate().back();
-
-            //Takes to speedtest page
-            Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("speedTest"))).click();
-            Thread.sleep(4000);
-
-            driver.navigate().back();
-
-            //Opens the browser
-            Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("Browser"))).click();
-            Thread.sleep(1000);
-
-            MobileElement url = (MobileElement) driver.findElementByAccessibilityId("url");
-            url.click();
-            url.sendKeys("https://www.lambdatest.com");
-
-            Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("find"))).click();
-            Thread.sleep(1000);
+            //Capture smartui screenshot
+            driver.executeScript("smartui.takeScreenshot=first");
 
             driver.quit();
 
