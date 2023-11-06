@@ -40,6 +40,7 @@ public class AndroidApp {
             capabilities.setCapability("visual", true);
             capabilities.setCapability("devicelog", true);
             capabilities.setCapability("smartUI.project", "real-device-android-java-testng");
+            capabilities.setCapability("smartUI.build", "build-1");
 
             String hub = "https://" + userName + ":" + accessKey + gridURL;
             driver = new AppiumDriver(new URL(hub), capabilities);
